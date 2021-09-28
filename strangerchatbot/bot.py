@@ -215,4 +215,4 @@ def run():
     bot = telepot.Bot(conf.TOKEN)
     MessageLoop(bot,onMessage).run_as_thread()
     log("Stranger chat bot started")
-    bot.sendMessage(conf.ID_ADMIN,"♥️ Stranger chat bot started")
+    bot.sendMessage(conf.ID_ADMIN," Stranger chat bot started")
