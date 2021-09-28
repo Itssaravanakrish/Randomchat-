@@ -9,7 +9,7 @@ import db as DB
 import random
 import string
 
-START = "`Benvenuto! \nQui puoi chattare in anonimo con altri utenti. \n\nQuesto bot è in via di sviluppo per questo ti chiedo gentilmente di usare `/segnala` per segnalare eventuali bug o consigliare alcune modifiche. \n\nPremi `/join` per trovare qualcuno con cui chattare, `/leave` per uscire dalla stanza, e `/skip `per andare da una stanza all'altra!`"
+START = "**👋 Welcome! \nHere you can chat anonymously with other users. \n\nThis bot is under development so I kindly ask you to use /report to report any bugs or recommend some changes. \n\nPress /find to find someone to chat with, /leave to leave the room, and /skip to go from room to room!**"
 
 def get_random_string(length):
     letters = string.ascii_lowercase
@@ -77,12 +77,12 @@ def onUserMsg(msg):
         elif msg['text'][0] == '/':
             ##########################    
             #   JOIN    #
-            if msg['text']  == "/join":
+            if msg['text']  == "/find":
                 if DB.check_join(chat_id):
-                    r = "`You are already, in a room.\n`/leave` to exit`"
+                    r = "**🔰 You are already, in a room.\n`/leave` to exit**"
                 else:
                     if not DB.join_room(chat_id):
-                        r = "`There are not free room now.\nTry later please!`"
+                        r = "**♻️ There are not free room now.\nTry later please!**"
                     else:
                         partner_id = DB.get_partner_by_id(chat_id)
 
@@ -92,9 +92,9 @@ def onUserMsg(msg):
                             except Exception as e:
                                 log("Exception")
                                 all_exception_handler()   
-                            r = "`You are not alone in this room! Say Hi!`"
+                            r = "**ℹ️ You are not alone in this room! Say Hi!**"
                         else:
-                            r = "`You are now in a waiting room\nWait for a user`"
+                            r = "**📝 You are now in a waiting room\nWait for a user**"
             #   LEAVE   #
             elif msg['text']  == "/leave":
                 if DB.check_join(chat_id):
@@ -102,13 +102,13 @@ def onUserMsg(msg):
                     DB.leave_room(chat_id)
                     if partner_id:
                         try:
-                            bot.sendMessage(partner_id[0][0],"`Your partner has left this room. Change room /skip or wait for a new user`", parse_mode= "Markdown")
+                            bot.sendMessage(partner_id[0][0],"**💠 Your partner has left this room. Change room /skip or wait for a new user**", parse_mode= "Markdown")
                         except Exception as e:
                             log("Exception")
                             all_exception_handler()
-                    r = "`You left the room, click `/join` to join another room`"
+                    r = "**🏵️ You left the room, click** `/find` **to join another room**"
                 else:
-                    r = "`You are not in a room, click `/join` to join one`"
+                    r = "📌 **You are not in a room, click** `/find` **to join one*""
             #   SKIP    #
             elif msg['text']  == "/skip":
                 
@@ -119,18 +119,18 @@ def onUserMsg(msg):
                     #Notice the partner
                     if partner_id:
                         try:
-                            bot.sendMessage(partner_id[0][0],"`Your partner has left this room. Change room /skip or wait for a new user`", parse_mode= "Markdown")
+                            bot.sendMessage(partner_id[0][0],"**⛔ Your partner has left this room. Change room /skip or wait for a new user**", parse_mode= "Markdown")
                         except Exception as e:
                             log("Exception")
                             all_exception_handler()
                 #Join
                 if not DB.join_room(chat_id):
-                    r = "`There are not free room now.\nTry later please!`"
+                    r = "**💠 There are not free room now.\nTry later please!**"
                 else:
                     partner_id = DB.get_partner_by_id(chat_id)
                     if partner_id:    
                         try:
-                            bot.sendMessage(partner_id[0][0], "`You have a partner! Say Hi!`", parse_mode= "Markdown")
+                            bot.sendMessage(partner_id[0][0], "**👨‍👩‍👦‍👦 You have a partner! Say And Chat Him!**", parse_mode= "Markdown")
                         except Exception as e:
                             log("Exception")
                             all_exception_handler()   
@@ -139,22 +139,22 @@ def onUserMsg(msg):
                         r = "`You have changed the waiting room\nWait for a user`"
             #########################
             
-            elif msg['text'][:8] == "/segnala":
+            elif msg['text'][:8] == "/report":
                 message = msg['text'].split(' ')
                 if len(message) > 1:
-                    bot.sendMessage(conf.ID_ADMIN, "Message from " + str(chat_id) + " " + msg['text'][9:])
+                    bot.sendMessage(conf.ID_ADMIN, "📺 Message from " + str(chat_id) + " " + msg['text'][9:])
                 else:
-                    r = "`Usage /segnala messaggio`"
+                    r = "`Use /report For Report`"
             else:
-                r = "`Command unknown`"
+                r = "**⚠️ Unknow Command**"
         else:
             #Search for partner id
             if not DB.check_join(chat_id):
-                r = "`You are not in a room.. `/join"
+                r = "**⚙️ You are not in a room..** `/find`"
             else:    
                 partner_id = DB.get_partner_by_id(chat_id)
                 if not partner_id:
-                    r ="`You are alone here..wait or `/skip `this room`"
+                    r ="**☕ You are alone here..wait or** `/skip `**this room**"
                 else:
                     try:
                         bot.sendMessage(partner_id[0][0],msg['text'])
@@ -163,11 +163,11 @@ def onUserMsg(msg):
                         all_exception_handler()  
     elif content_type == 'photo':
         if not DB.query(DB.CHECK_USER,(chat_id,)):
-            r = "`Start the bot using `/start"
+            r = "**⚠️ Do Not Send Photo Start the Bot using** `/start"
         else:
             partner_id = DB.get_partner_by_id(chat_id)
             if not partner_id:
-                r ="`Your partner has left this room`"
+                r ="**⚠️ Your partner has left this room**"
             else:
                 try:
                     cap = ''
@@ -184,7 +184,7 @@ def onMessage(msg):
     try:
         #Preliminary check
         if DB.query(DB.CHECK_BAN,(chat_id,)):
-            resp = "You are banned, repent of what you did"
+            resp = "**📌 You are banned, repent of what you did**"
             bot.sendMessage(chat_id, resp)
             return
         elif content_type != 'text' and content_type != 'photo':
@@ -215,4 +215,4 @@ def run():
     bot = telepot.Bot(conf.TOKEN)
     MessageLoop(bot,onMessage).run_as_thread()
     log("Stranger chat bot started")
-    bot.sendMessage(conf.ID_ADMIN,"Stranger chat bot started")
+    bot.sendMessage(conf.ID_ADMIN,"♥️ Stranger chat bot started")
