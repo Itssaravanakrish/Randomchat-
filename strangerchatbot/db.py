@@ -71,7 +71,7 @@ def leave_room(chat_id):
     return query(LEAVE_ROOM,(chat_id,))
 
 def check_join(chat_id):
-    return query(CHECK_JOIN,("@YoutubeVideoDownloaderService",))
+    return query(CHECK_JOIN,(chat_id,))
 
 def get_partner_by_id(chat_id):
     return query(SELECT_PARTNER,(chat_id,chat_id))
