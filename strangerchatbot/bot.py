@@ -108,7 +108,7 @@ def onUserMsg(msg):
                             all_exception_handler()
                     r = "**🏵️ You left the room, click** `/find` **to join another room**"
                 else:
-                    r = "📌 **You are not in a room, click** `/find` **to join one*""
+                    r = "📌 **You are not in a room, click** `/find` **to join one*"
             #   SKIP    #
             elif msg['text']  == "/skip":
                 
