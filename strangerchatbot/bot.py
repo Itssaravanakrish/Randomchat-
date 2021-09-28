@@ -70,6 +70,17 @@ def onUserMsg(msg):
     content_type, chat_type, chat_id = telepot.glance(msg)
     r = ''
     if content_type == 'text':
+       
+
+        if msg['text'] == '/start':
+
+            r = newUser(msg)
+
+        elif not DB.query(DB.CHECK_USER,(chat_id,)):
+
+            r = "`Start the bot using `/start"
+
+        elif msg['text'][0] == '/':
                     ##########################    
             #   JOIN    #
             if msg['text']  == "/find":
