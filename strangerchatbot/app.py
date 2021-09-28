@@ -8,7 +8,7 @@ if __name__ == "__main__":
     log("Init app")
     DB.connect()
    
-    Bot.run()
+    bot.run()
     while 1:
         time.sleep(1)
         
