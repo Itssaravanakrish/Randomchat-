@@ -5,10 +5,10 @@ import config as conf
 import time
 
 params = {
-    'database': 'mongodb',
-    'user': 'piyush4511',
-    'password': 'userbot2',
-    'host': 'mongodb+srv://piyush4511:userbot2@cluster0.5zymm.mongodb.net/myFirstDatabase?retryWrites=true&w=majority',
+    'database': 'botDb',
+    'user': 'admin',
+    'password': 'admin',
+    'host': 'strangerchat_postgres_1',
     'port': 5432
     }
 
