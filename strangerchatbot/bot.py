@@ -11,7 +11,7 @@ import random
 import string
 
 keyboard = InlineKeyboardMarkup(inline_keyboard=[
-                   [InlineKeyboardButton(text='♻️ Updates Channel', url='telegram.me/YoutubeVideoDownloaderService'), InlineKeyboardButton(text='👥 Support Group', url='telegram.me/VCMusicGroup')], InlineKeyboardButton(text='👨🏻‍💻 Creator', url='t.me/PiyushrTG'), InlineKeyboardButton(text='⭐ Bots List', url='t.me/YoutubeVideoDownloaderService/70')]])
+                   [InlineKeyboardButton(text='Updates Channel', url='telegram.me/YoutubeVideoDownloaderService'), InlineKeyboardButton(text='👥 Support Group', url='telegram.me/VCMusicGroup')], InlineKeyboardButton(text='👨🏻‍💻 Creator', url='t.me/PiyushrTG'), InlineKeyboardButton(text='⭐ Bots List', url='t.me/YoutubeVideoDownloaderService/70')]])
                
 
 START = "**👋 Welcome! \nHere you can chat anonymously with other users. \n\nThis bot is under development so I kindly ask you to use /report to report any bugs or recommend some changes. \n\nPress /find to find someone to chat with, /leave to leave the room, and /skip to go from room to room!**"
