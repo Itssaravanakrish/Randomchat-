@@ -1,0 +1,28 @@
+{
+  "name": "Random Chat Bot",
+  "description": "Random Chat Bot Chat With Random Users",
+  "keywords": [
+    "Random","Chat Bot"
+  ],
+  "repository": "https://github.com/piyushraj00/Random-Chat-Bot",
+  "success_url": "https://t.me/PrRandomChatBot",
+  "website": "https://github.com/piyushraj00/Random-Chat-Bot",
+  "env": {
+        
+        "TOKEN": {"description": "Get Bot Token From @BotFather","required": true},
+        "ID_ADMIN": {"description": "Get Id From @TgIdentify_Bot","required": true}
+  },
+      "buildpacks": [
+        {"url": "https://github.com/jonathanong/heroku-buildpack-ffmpeg-latest.git"},
+        {"url": "heroku/python"}
+    ],
+  "formation": {
+        "worker": {
+            "quantity": 1,
+            "size": "free"
+        }
+    },
+      "stack": "heroku-20"
+
+
+}
