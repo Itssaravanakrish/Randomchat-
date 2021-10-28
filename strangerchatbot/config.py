@@ -1,5 +1,5 @@
 import os
 
-TOKEN = os.environ.get("TOKEN")
+TOKEN = "2032080344:AAGu4gOq83clYQuVG9_WZzmTRi_ULsh-GpM"
 
-ID_ADMIN = os.environ.get("ID_ADMIN")
+ID_ADMIN = "-1001674081029"
