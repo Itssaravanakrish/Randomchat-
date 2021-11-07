@@ -81,9 +81,8 @@ def onUserMsg(msg):
 
             r = newUser(msg)
 
-        elif not DB.query(DB.CHECK_USER,(chat_id,)):
-
-            r = "`Start the bot using `/start"
+        
+           
 
         elif msg['text'][0] == '/':
                     ##########################    
