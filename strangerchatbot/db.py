@@ -5,10 +5,10 @@ import config as conf
 import time
 
 params = {
-    'database': 'botDb',
-    'user': 'admin',
-    'password': 'admin',
-    'host': 'strangerchat_postgres_1',
+    'database': 'fanny.db.elephantsql.com',
+    'user': 'jtghubuh',
+    'password': 'gzOn_0fbFvvESmxhaqs0zdioAlHHJocp',
+    'host': 'postgres://jtghubuh:gzOn_0fbFvvESmxhaqs0zdioAlHHJocp@fanny.db.elephantsql.com/jtghubuh',
     'port': 5432
     }
 
