@@ -1,0 +1,5 @@
+import os
+
+TOKEN = "6318256885:AAGgylgIY6zZXlegJfFdJO5QJOogSFhQAxs"
+
+ID_ADMIN =  "-1001169076058"
